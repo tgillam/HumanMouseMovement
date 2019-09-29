@@ -4,13 +4,17 @@
 #include <windows.h>
 #include "mouse.h"
 
+/*
+ * Created by Tyler Gillam in Fall 2018 as a side project
+ * Code needs to be refactored to be more readable as well as refactoring all of the if-elses
+ * Free to use and modify
+ */
+//TODO: Refactor code into multiple methods and files to improve readability and modularity
 //moves mouse to position x,y using a human like algorithm
 void moveMouse(int x, int y){
 	int a = 0;
 	int b = 0;
 	int mouseTimes = rand()%10;
-	//printf("%d", mouseTimes);
-	//fflush(stdout);
 	for(int i = 0; i<mouseTimes; i++){
 		int speed = rand()%3+3;
 	    POINT cursor;
@@ -116,31 +120,22 @@ void randomizeMouse(int x, int y, int speed){
 		b = rand()%speed;
 		if(xDiff>yDiff){
 			if(z!=0){
-			if(p.x != x){
-				if(p.x < x){
+				if(p.x != x){
+					if(p.x < x){
 						SetCursorPos(p.x+1, p.y);
-						if(b == 1)
-							Sleep(1);
-				}
-				else{
+					}
+					else{
 						SetCursorPos(p.x-1, p.y);
-						if(b == 1)
-							Sleep(1);
-				}
-
+					}
 			}
 		}
 		else{
 			if(p.y != y){
 				if(p.y < y){
 					SetCursorPos(p.x, p.y+1);
-					if(b == 1)
-						Sleep(1);
 				}
 				else{
 					SetCursorPos(p.x, p.y-1);
-					if(b == 1)
-						Sleep(1);
 				}
 			}
 		}
@@ -149,14 +144,10 @@ void randomizeMouse(int x, int y, int speed){
 			if(z==0){
 				if(p.x != x){
 					if(p.x < x){
-							SetCursorPos(p.x+1, p.y);
-							if(b == 1)
-								Sleep(1);
+						SetCursorPos(p.x+1, p.y);
 					}
 					else{
-							SetCursorPos(p.x-1, p.y);
-							if(b == 1)
-								Sleep(1);
+						SetCursorPos(p.x-1, p.y);
 					}
 
 				}
@@ -165,16 +156,15 @@ void randomizeMouse(int x, int y, int speed){
 				if(p.y != y){
 					if(p.y < y){
 						SetCursorPos(p.x, p.y+1);
-						if(b == 1)
-							Sleep(1);
 					}
 					else{
 						SetCursorPos(p.x, p.y-1);
-						if(b == 1)
-							Sleep(1);
 					}
 				}
 			}
+		}
+		if(b == 1){
+			Sleep(1);
 		}
 		GetCursorPos(&p);
 	}
